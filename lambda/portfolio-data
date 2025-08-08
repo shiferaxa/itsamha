@@ -1,0 +1,142 @@
+import json
+import boto3
+import os
+from datetime import datetime
+
+def handler(event, context):
+    """
+    Lambda function to serve portfolio data
+    """
+    
+    # CORS headers
+    headers = {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token',
+        'Access-Control-Allow-Methods': 'GET,OPTIONS'
+    }
+    
+    # Handle preflight OPTIONS request
+    if event['httpMethod'] == 'OPTIONS':
+        return {
+            'statusCode': 200,
+            'headers': headers,
+            'body': json.dumps({'message': 'CORS preflight'})
+        }
+    
+    try:
+        # Portfolio data showcasing Amha's cloud engineering skills
+        portfolio_data = {
+            'projects': [
+                {
+                    'id': 1,
+                    'title': 'Personal Cloud Portfolio Website',
+                    'description': 'This very website - a complete AWS cloud architecture showcase',
+                    'technologies': ['Terraform', 'S3', 'CloudFront', 'Route 53', 'Lambda', 'API Gateway', 'VPC'],
+                    'highlights': [
+                        'Complete Infrastructure as Code with Terraform',
+                        'Serverless architecture with Lambda and API Gateway',
+                        'Global CDN with CloudFront and custom domain',
+                        'Cost-optimized design (~$5/month)',
+                        'Responsive design with modern CSS'
+                    ]
+                },
+                {
+                    'id': 2,
+                    'title': 'FireFerral',
+                    'description': 'A modern web application for managing referrals and connections',
+                    'technologies': ['React', 'Firebase', 'JavaScript', 'CSS', 'Web App'],
+                    'highlights': [
+                        'Modern responsive web application',
+                        'Firebase backend integration',
+                        'User-friendly referral management system',
+                        'Deployed on Firebase hosting'
+                    ],
+                    'url': 'https://fireferral.web.app'
+                }
+            ],
+            'skills': {
+                'aws_services': ['EC2', 'S3', 'Lambda', 'RDS', 'DynamoDB', 'CloudFront', 'Route 53', 'VPC', 'IAM'],
+                'infrastructure_as_code': ['Terraform', 'CloudFormation', 'AWS CDK', 'Ansible'],
+                'containers_orchestration': ['Docker', 'Kubernetes', 'Amazon EKS', 'Amazon ECS', 'AWS Fargate'],
+                'cicd_devops': ['GitHub Actions', 'GitLab CI/CD', 'AWS CodePipeline', 'Jenkins', 'AWS CodeBuild'],
+                'monitoring_logging': ['CloudWatch', 'AWS X-Ray', 'Prometheus', 'Grafana', 'ELK Stack'],
+                'security_compliance': ['AWS IAM', 'AWS Secrets Manager', 'AWS KMS', 'AWS WAF', 'Security Groups'],
+                'networking': ['VPC Design', 'Subnets', 'NAT Gateways', 'Load Balancers', 'DNS Management'],
+                'databases': ['Amazon RDS', 'DynamoDB', 'ElastiCache', 'Aurora', 'DocumentDB'],
+                'serverless': ['AWS Lambda', 'API Gateway', 'Step Functions', 'EventBridge', 'SQS/SNS'],
+                'programming': ['Python', 'Bash', 'PowerShell', 'YAML', 'JSON']
+            },
+            'certifications': [
+                {
+                    'name': 'AWS Certified Solutions Architect - Associate',
+                    'issuer': 'Amazon Web Services',
+                    'date': 'August 2025',
+                    'credential_id': 'View on Credly',
+                    'credly_url': 'https://www.credly.com/users/amha-shiferaw'
+                },
+                {
+                    'name': 'AWS Certified Cloud Practitioner',
+                    'issuer': 'Amazon Web Services',
+                    'date': 'May 2025',
+                    'credential_id': 'View on Credly',
+                    'credly_url': 'https://www.credly.com/users/amha-shiferaw'
+                }
+            ],
+            'experience': [
+                {
+                    'title': 'Cloud Operations Engineer',
+                    'company': 'Colba (Contract)',
+                    'duration': 'Jun 2022 - Present (3+ years)',
+                    'location': 'Raleigh, North Carolina (Hybrid)',
+                    'responsibilities': [
+                        'Proactively monitored CloudWatch metrics and VPC Flow Logs to identify and resolve critical errors, ensuring optimal performance and security of cloud infrastructure',
+                        'Designed and deployed scalable cloud infrastructure using AWS services, enhancing system reliability, performance, and operational uptime for mission-critical applications',
+                        'Managed cloud operations to ensure high availability and optimized resource utilization, achieving an average 12% reduction in operational costs through strategic resource management',
+                        'Automated deployment processes using Infrastructure as Code (IaC) tools, including Terraform and CloudFormation, reducing manual tasks and accelerating deployment timelines by at least 30%',
+                        'Leveraged proficiency in AWS CLI to streamline cloud resource management, enabling efficient scripting and automation of complex infrastructure tasks'
+                    ]
+                },
+                {
+                    'title': 'Systems Integration Specialist',
+                    'company': 'Colba (Contract)',
+                    'duration': 'Dec 2019 - Jun 2022 (2 years 7 months)',
+                    'location': 'Raleigh, North Carolina',
+                    'responsibilities': [
+                        'Demonstrated deep expertise in managing and optimizing systems across Linux, macOS, and Windows environments, ensuring cross-platform compatibility and operational excellence',
+                        'Collaborated closely with clients to design and manage high-performance relational databases, ensuring seamless data operations, scalability, and robust reliability to support critical business functions',
+                        'Architected and deployed secure, PCI DSS-compliant network solutions, safeguarding sensitive data and driving a 17% annual revenue increase for clients by enhancing operational efficiency and system integrity',
+                        'Streamlined audit processes by automating report generation with advanced bash scripting, significantly boosting efficiency, accuracy, and compliance across organizational workflows',
+                        'Developed and implemented customized, high-impact solutions across diverse accounts, consistently delivering a minimum 11% revenue increase per account through strategic innovation and client-focused execution'
+                    ]
+                },
+                {
+                    'title': 'Professional DJ',
+                    'company': 'Freelance / Various Venues',
+                    'duration': '2015 - Present',
+                    'responsibilities': [
+                        'Perform at corporate events, weddings, and nightclub venues',
+                        'Curate music experiences tailored to diverse audiences',
+                        'Manage sound equipment and technical setup',
+                        'Built personal brand and client base through exceptional service'
+                    ]
+                }
+            ],
+            'last_updated': datetime.utcnow().isoformat()
+        }
+        
+        return {
+            'statusCode': 200,
+            'headers': headers,
+            'body': json.dumps(portfolio_data)
+        }
+        
+    except Exception as e:
+        print(f"Error serving portfolio data: {str(e)}")
+        return {
+            'statusCode': 500,
+            'headers': headers,
+            'body': json.dumps({
+                'error': 'Internal server error'
+            })
+        }

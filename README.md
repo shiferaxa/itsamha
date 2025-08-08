@@ -39,5 +39,4 @@ See `docs/DEPLOYMENT.md` for detailed instructions.
 ├── terraform/           # Infrastructure as Code
 ├── website/            # Static website files
 ├── lambda/             # Serverless functions
-└── docs/               # Documentation
 ```

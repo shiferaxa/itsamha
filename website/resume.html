@@ -4,445 +4,268 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amha Shiferaw - Cloud Engineer Resume</title>
+    <title>Amha Shiferaw — Senior Cloud Engineer Resume</title>
     <style>
         @media print {
-            body {
-                margin: 0;
-            }
-
-            .no-print {
-                display: none;
-            }
-
-            .page-break {
-                page-break-before: always;
-            }
+            body { margin: 0; }
+            .no-print { display: none; }
         }
+
+        * { box-sizing: border-box; }
 
         body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.4;
-            margin: 0;
-            padding: 20px;
-            color: #333;
-            background: white;
-        }
-
-        .resume-container {
-            max-width: 8.5in;
+            font-family: Georgia, 'Times New Roman', serif;
+            line-height: 1.45;
             margin: 0 auto;
-            background: white;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            max-width: 850px;
+            padding: 32px 28px;
+            color: #222;
+            background: #fff;
         }
 
-        .page {
-            padding: 0.75in;
-            min-height: 10.5in;
-            box-sizing: border-box;
-        }
-
-        .header {
-            text-align: center;
-            border-bottom: 3px solid #007bff;
-            padding-bottom: 20px;
-            margin-bottom: 30px;
-        }
-
-        .header h1 {
-            font-size: 2.2em;
-            margin: 0 0 5px 0;
-            color: #007bff;
-            font-weight: bold;
-        }
-
-        .header h2 {
-            font-size: 1.3em;
-            margin: 0 0 15px 0;
-            color: #666;
-            font-weight: normal;
-        }
-
-        .contact-info {
+        .no-print {
+            font-family: system-ui, sans-serif;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
             display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            font-size: 0.95em;
+            gap: 16px;
         }
 
-        .contact-info a {
-            color: #007bff;
+        .no-print a {
+            color: #2563eb;
             text-decoration: none;
         }
 
-        .section {
-            margin-bottom: 25px;
-        }
+        .no-print a:hover { text-decoration: underline; }
 
-        .section h3 {
-            font-size: 1.3em;
-            color: #007bff;
-            border-bottom: 2px solid #007bff;
-            padding-bottom: 5px;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
+        header.head { text-align: center; }
 
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .skill-category {
-            background: #f8f9fa;
-            padding: 12px;
-            border-radius: 5px;
-            border-left: 4px solid #007bff;
-        }
-
-        .skill-category h4 {
-            margin: 0 0 8px 0;
-            color: #007bff;
-            font-size: 1em;
-            font-weight: bold;
-        }
-
-        .skill-category ul {
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 400;
             margin: 0;
-            padding-left: 15px;
-            font-size: 0.9em;
+            letter-spacing: 0.01em;
         }
 
-        .skill-category li {
-            margin-bottom: 3px;
-        }
-
-        .job {
-            margin-bottom: 20px;
-            page-break-inside: avoid;
-        }
-
-        .job-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 8px;
-        }
-
-        .job-title {
-            font-weight: bold;
-            font-size: 1.1em;
+        .subtitle {
+            font-family: system-ui, sans-serif;
+            font-size: 1.05rem;
+            margin-top: 4px;
             color: #333;
         }
 
-        .job-company {
-            font-weight: bold;
-            color: #007bff;
-            margin-top: 2px;
+        .contact-line {
+            font-family: system-ui, sans-serif;
+            font-size: 0.85rem;
+            color: #444;
+            margin-top: 14px;
+            padding: 10px 0;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
         }
 
-        .job-duration {
-            font-style: italic;
-            color: #666;
-            text-align: right;
+        .contact-line a { color: #444; text-decoration: none; }
+
+        h2 {
+            font-family: system-ui, sans-serif;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin: 26px 0 10px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #ddd;
         }
 
-        .job-location {
-            color: #666;
-            font-size: 0.9em;
-            margin-top: 2px;
+        p, li { font-size: 0.92rem; }
+
+        ul { margin: 6px 0 14px; padding-left: 22px; }
+
+        li { margin-bottom: 4px; }
+
+        .job-head {
+            font-weight: 700;
+            font-family: system-ui, sans-serif;
+            font-size: 0.92rem;
+            margin-top: 14px;
         }
 
-        .job ul {
-            margin: 8px 0 0 0;
-            padding-left: 18px;
-        }
+        .skills p { margin: 3px 0; }
 
-        .job li {
-            margin-bottom: 5px;
-            font-size: 0.95em;
-            line-height: 1.3;
-        }
+        .skills b { font-family: system-ui, sans-serif; font-size: 0.88rem; }
 
-        .certifications {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-        }
+        .certs { columns: 2; column-gap: 40px; }
 
-        .cert {
-            background: #fff5e6;
-            padding: 12px;
-            border-radius: 5px;
-            border-left: 4px solid #ff9500;
-        }
+        .certs li { break-inside: avoid; }
 
-        .cert-name {
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 5px;
-        }
+        .proj-head { font-weight: 700; font-family: system-ui, sans-serif; font-size: 0.92rem; margin-top: 14px; }
 
-        .cert-issuer {
-            color: #ff9500;
-            font-size: 0.9em;
-            margin-bottom: 3px;
-        }
-
-        .cert-date {
-            color: #666;
-            font-size: 0.85em;
-        }
-
-        .download-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: #007bff;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .download-btn:hover {
-            background: #0056b3;
-        }
-
-        @media (max-width: 768px) {
-
-            .skills-grid,
-            .certifications {
-                grid-template-columns: 1fr;
-            }
-
-            .job-header {
-                flex-direction: column;
-            }
-
-            .job-duration {
-                text-align: left;
-                margin-top: 5px;
-            }
-        }
+        .proj-tech { font-style: italic; font-size: 0.85rem; color: #444; margin: 2px 0 4px; }
     </style>
 </head>
 
 <body>
-    <div class="no-print" style="position: fixed; top: 20px; right: 20px; display: flex; gap: 10px;">
-        <a href="Amha_Shiferaw_Resume.pdf" target="_blank" style="background: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 5px; text-decoration: none; font-size: 14px; box-shadow: 0 2px 10px rgba(0,0,0,0.2);">Download PDF</a>
-        <button onclick="window.print()" style="background: #28a745; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 14px; box-shadow: 0 2px 10px rgba(0,0,0,0.2);">Print</button>
+    <nav class="no-print">
+        <a href="/">← Back to itsamha.com</a>
+        <a href="Amha_Shiferaw_Resume.pdf" download>Download PDF</a>
+        <a href="#" onclick="window.print(); return false;">Print</a>
+    </nav>
+
+    <header class="head">
+        <h1>Amha Shiferaw</h1>
+        <div class="subtitle">Senior Cloud Engineer</div>
+        <div class="contact-line">
+            919-561-1488 | Raleigh, NC | <a href="mailto:amhashiferaw@gmail.com">amhashiferaw@gmail.com</a> |
+            <a href="https://linkedin.com/in/shiferawa">linkedin.com/in/shiferawa</a> |
+            <a href="https://github.com/shiferaxa">github.com/shiferaxa</a>
+        </div>
+    </header>
+
+    <h2>Professional Overview</h2>
+    <p>
+        Senior Cloud Engineer with 7+ years optimizing cloud infrastructure and Continuous Integration/Continuous
+        Deployment (CI/CD) automation across Microsoft Azure, Amazon Web Services (AWS), Google Cloud and bare metal
+        Kubernetes environments. Reduced deployment time by 75% through containerization and achieved 99.9% system
+        uptime. Designed and deployed self healing kubernetes pipelines utilizing flux. Dynamic and results-driven with
+        experience implementing scalable, secure, and cost-optimized cloud infrastructures, specializing in multi cloud
+        infrastructure on AWS, Azure, and Google Cloud Platform. Proficient in IaC tools like Terraform and
+        CloudFormation, and in SQL. AWS Certified Solutions Architect, GCP Associate Cloud Engineer, and Microsoft
+        Azure Administrator with expertise in Terraform, Kubernetes, Bash, and Python automation.
+    </p>
+
+    <h2>Technical Skills</h2>
+    <div class="skills">
+        <p><b>Cloud Platforms:</b> Microsoft Azure, Amazon Web Services, Google Cloud Platform</p>
+        <p><b>CDN:</b> Cloudflare, Akamai, CloudFront, Cloud CDN, Azure Front Door</p>
+        <p><b>Orchestration:</b> Kubernetes, Docker, Helm</p>
+        <p><b>Infrastructure as Code:</b> Terraform, Bicep, CloudFormation, Ansible</p>
+        <p><b>CI/CD Tools:</b> Azure DevOps Pipelines, GitHub Actions, Jenkins</p>
+        <p><b>Programming:</b> Python, Bash, JSON, YAML</p>
+        <p><b>Monitoring:</b> Prometheus, Grafana, Azure Monitor, Datadog, Kibana</p>
+        <p><b>Security:</b> DevSecOps practices, Security Automation, Incident Management, Distributed Systems Management</p>
+        <p><b>GitOps:</b> ArgoCD, Flux, Git workflows, Github Actions</p>
     </div>
 
-    <div class="resume-container">
-        <!-- Page 1 -->
-        <div class="page">
-            <div class="header">
-                <h1>AMHA SHIFERAW</h1>
-                <h2>Cloud Operations Engineer</h2>
-                <div class="contact-info">
-                    <span>📧 amhashiferaw@gmail.com</span>
-                    <span>📍 Raleigh, NC</span>
-                    <a href="https://linkedin.com/in/shiferawa">🔗 LinkedIn</a>
-                    <a href="https://github.com/shiferaxa">💻 GitHub</a>
-                    <a href="https://www.credly.com/users/amha-shiferaw">🏆 Credly</a>
-                </div>
-            </div>
+    <h2>Work Experience</h2>
 
-            <div class="section">
-                <h3>TECHNICAL SKILLS</h3>
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h4>AWS Services</h4>
-                        <ul>
-                            <li>EC2, S3, Lambda, RDS</li>
-                            <li>CloudWatch, VPC, IAM</li>
-                            <li>CloudFront, Route 53</li>
-                            <li>DynamoDB, ElastiCache</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <h4>Infrastructure as Code</h4>
-                        <ul>
-                            <li>Terraform</li>
-                            <li>AWS CloudFormation</li>
-                            <li>AWS CDK</li>
-                            <li>Ansible</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <h4>Containers & Orchestration</h4>
-                        <ul>
-                            <li>Docker</li>
-                            <li>Kubernetes</li>
-                            <li>Amazon EKS</li>
-                            <li>Amazon ECS, Fargate</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <h4>CI/CD & DevOps</h4>
-                        <ul>
-                            <li>GitHub Actions</li>
-                            <li>GitLab CI/CD</li>
-                            <li>AWS CodePipeline</li>
-                            <li>Jenkins, AWS CodeBuild</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <h4>Monitoring & Logging</h4>
-                        <ul>
-                            <li>CloudWatch Metrics & Logs</li>
-                            <li>AWS X-Ray</li>
-                            <li>Prometheus, Grafana</li>
-                            <li>ELK Stack</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <h4>Security & Compliance</h4>
-                        <ul>
-                            <li>AWS IAM, Security Groups</li>
-                            <li>AWS Secrets Manager</li>
-                            <li>AWS KMS, WAF</li>
-                            <li>PCI DSS Compliance</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <h4>Networking</h4>
-                        <ul>
-                            <li>VPC Design & Implementation</li>
-                            <li>Subnets, NAT Gateways</li>
-                            <li>Load Balancers</li>
-                            <li>DNS Management</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <h4>Programming & Scripting</h4>
-                        <ul>
-                            <li>Python, Bash</li>
-                            <li>PowerShell</li>
-                            <li>YAML, JSON</li>
-                            <li>AWS CLI</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+    <div class="job-head">Relias (May 2026 - Present) Senior Cloud Engineer, Raleigh, North Carolina</div>
+    <ul>
+        <li>Cloud Architecture &amp; Modernization: Architected and deployed scalable, resilient infrastructure on
+            Google Cloud Platform (GCP) and Azure, utilizing Infrastructure as Code (IaC) to automate provisioning and
+            ensure modernization of legacy systems.</li>
+        <li>Provisioned, Managed, and administrated GKE and AKS Kubernetes clusters.</li>
+        <li>DevOps &amp; Automation: Engineered CI/CD pipelines and automated workflow systems to increase operational
+            efficiency, reduce manual intervention, and accelerate software delivery cycles utilizing Github Actions
+            and Azure DevOps.</li>
+        <li>Site Reliability (SRE) &amp; Observability: Maintain high system availability through proactive monitoring
+            (Datadog, Google Cloud Operations, Grafana, Elastic, Logstash, and Kibana), automated failover strategies,
+            and robust disaster recovery planning.</li>
+        <li>Security &amp; IAM Governance: Managed Cloud Identity and Access Management (IAM), including service
+            accounts and managed identities, ensuring strict adherence to security standards and compliance
+            protocols.</li>
+        <li>Cross-Functional Collaboration: Partnered with development teams to optimize application infrastructure,
+            troubleshoot complex incidents, and implement cost-optimization strategies to maximize resource
+            efficiency.</li>
+        <li>Designed and implemented CICD and automation for compliance data pipelines (HIPAA, FedRAMP)</li>
+        <li>Led the migration of ReliasVR from a vendor to our internal Google Cloud Project, provisioning the
+            infrastructure with an automated terraform repository while updating and hardening the security standards
+            to line up with our compliance requirements.</li>
+    </ul>
 
-            <div class="section">
-                <h3>AWS CERTIFICATIONS</h3>
-                <div class="certifications">
-                    <div class="cert">
-                        <div class="cert-name">AWS Certified Solutions Architect - Associate</div>
-                        <div class="cert-issuer">Amazon Web Services</div>
-                        <div class="cert-date">August 2025</div>
-                    </div>
-                    <div class="cert">
-                        <div class="cert-name">AWS Certified Cloud Practitioner</div>
-                        <div class="cert-issuer">Amazon Web Services</div>
-                        <div class="cert-date">May 2025</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="job-head">Relias (November 2025 - May 2026) Cloud Engineer, Raleigh, North Carolina</div>
+    <ul>
+        <li>Cloud Architecture &amp; Modernization: Architected and deployed scalable, resilient infrastructure on
+            Google Cloud Platform (GCP) and Azure, utilizing Infrastructure as Code (IaC) to automate provisioning and
+            ensure modernization of legacy systems.</li>
+        <li>Managed, and administrated GKE and AKS Kubernetes clusters.</li>
+        <li>DevOps &amp; Automation: Engineered CI/CD pipelines and automated workflow systems to increase operational
+            efficiency, reduce manual intervention, and accelerate software delivery cycles utilizing Github Actions
+            and Azure DevOps.</li>
+        <li>Site Reliability (SRE) &amp; Observability: Maintain high system availability through proactive monitoring
+            (Datadog, Google Cloud Operations, Grafana, Elastic, Logstash, and Kibana), automated failover strategies,
+            and robust disaster recovery planning.</li>
+    </ul>
 
-        <!-- Page 2 -->
-        <div class="page page-break">
-            <div class="section">
-                <h3>PROFESSIONAL EXPERIENCE</h3>
+    <div class="job-head">Colba (June 2022 - November 2025) DevOps Engineer, Raleigh, North Carolina</div>
+    <ul>
+        <li>Proactively monitored CloudWatch metrics and VPC Flow Logs to identify and resolve critical errors.</li>
+        <li>Designed and deployed scalable cloud infrastructure using Terraform combined with AWS services for
+            mission-critical applications.</li>
+        <li>Helped provision and migrate Databases to Cloud for Hybrid Architectures with 0% downtime.</li>
+        <li>Assisted in containerized deployments of legacy applications on cloud using AWS EKS.</li>
+        <li>Deployed GitOps solutions for EKS clusters utilizing Flux.</li>
+        <li>Automated deployment processes with Terraform and Ansible, accelerating timelines by 30% annually.</li>
+        <li>Leveraged AWS CLI for efficient scripting and automation of complex infrastructure tasks.</li>
+    </ul>
 
-                <div class="job">
-                    <div class="job-header">
-                        <div>
-                            <div class="job-title">Cloud Operations Engineer</div>
-                            <div class="job-company">Colba (Contract)</div>
-                            <div class="job-location">Raleigh, North Carolina (Hybrid)</div>
-                        </div>
-                        <div class="job-duration">Jun 2022 - Present<br>(3+ years)</div>
-                    </div>
-                    <ul>
-                        <li>Proactively monitored CloudWatch metrics and VPC Flow Logs to identify and resolve critical
-                            errors, ensuring optimal performance and security of cloud infrastructure</li>
-                        <li>Designed and deployed scalable cloud infrastructure using AWS services, enhancing system
-                            reliability, performance, and operational uptime for mission-critical applications</li>
-                        <li>Managed cloud operations to ensure high availability and optimized resource utilization,
-                            achieving an average <strong>12% reduction in operational costs</strong> through strategic
-                            resource management</li>
-                        <li>Automated deployment processes using Infrastructure as Code (IaC) tools, including Terraform
-                            and CloudFormation, reducing manual tasks and accelerating deployment timelines by at least
-                            <strong>30%</strong></li>
-                        <li>Leveraged proficiency in AWS CLI to streamline cloud resource management, enabling efficient
-                            scripting and automation of complex infrastructure tasks</li>
-                    </ul>
-                </div>
+    <div class="job-head">Colba (December 2018 - June 2022) Systems Administrator, Raleigh, North Carolina</div>
+    <ul>
+        <li>Managed and optimized systems across Linux, macOS, and Windows environments for operational excellence.</li>
+        <li>Collaborated with clients to design high-performance relational databases, ensuring data reliability and
+            scalability.</li>
+        <li>Architected secure, PCI DSS-compliant network solutions, enhancing system integrity and driving client
+            revenue growth</li>
+        <li>Provided end-user support and technical assistance for software and hardware issues, ensuring minimal
+            disruption to business operations.</li>
+        <li>Performed routine system maintenance, patching, and backups to ensure security, stability, and adherence
+            to disaster recovery protocols.</li>
+        <li>Managed user accounts, permissions, and access controls within Active Directory and other centralized
+            identity management systems.</li>
+    </ul>
 
-                <div class="job">
-                    <div class="job-header">
-                        <div>
-                            <div class="job-title">Systems Integration Specialist</div>
-                            <div class="job-company">Colba (Contract)</div>
-                            <div class="job-location">Raleigh, North Carolina</div>
-                        </div>
-                        <div class="job-duration">Dec 2019 - Jun 2022<br>(2 years 7 months)</div>
-                    </div>
-                    <ul>
-                        <li>Demonstrated deep expertise in managing and optimizing systems across Linux, macOS, and
-                            Windows environments, ensuring cross-platform compatibility and operational excellence</li>
-                        <li>Collaborated closely with clients to design and manage high-performance relational
-                            databases, ensuring seamless data operations, scalability, and robust reliability to support
-                            critical business functions</li>
-                        <li>Architected and deployed secure, PCI DSS-compliant network solutions, safeguarding sensitive
-                            data and driving a <strong>17% annual revenue increase</strong> for clients by enhancing
-                            operational efficiency and system integrity</li>
-                        <li>Streamlined audit processes by automating report generation with advanced bash scripting,
-                            significantly boosting efficiency, accuracy, and compliance across organizational workflows
-                        </li>
-                        <li>Developed and implemented customized, high-impact solutions across diverse accounts,
-                            consistently delivering a minimum <strong>11% revenue increase per account</strong> through
-                            strategic innovation and client-focused execution</li>
-                    </ul>
-                </div>
-            </div>
+    <h2>Certifications</h2>
+    <ul class="certs">
+        <li>Certified Kubernetes Administrator</li>
+        <li>Certified Kubernetes Application Developer</li>
+        <li>Google - Associate Cloud Engineer</li>
+        <li>Microsoft - Certified Azure Administrator</li>
+        <li>AWS - Certified Solutions Architect Associate</li>
+        <li>HashiCorp Certified - Terraform Associate</li>
+        <li>Akamai Automation &amp; DevOps Certification</li>
+        <li>NVidia - Fundamentals of Accelerated Computing with CUDA Python</li>
+        <li>Cisco Certified Networking Associate</li>
+        <li>AWS - Certified Cloud Practitioner</li>
+        <li>Microsoft - Certified Azure Fundamentals</li>
+        <li>Cisco - AI Fundamentals Certification</li>
+    </ul>
 
-            <div class="section">
-                <h3>KEY ACHIEVEMENTS</h3>
-                <ul>
-                    <li><strong>Cost Optimization:</strong> Achieved 12% reduction in operational costs through
-                        strategic cloud resource management and optimization</li>
-                    <li><strong>Deployment Efficiency:</strong> Accelerated deployment timelines by 30% through
-                        Infrastructure as Code automation</li>
-                    <li><strong>Revenue Impact:</strong> Drove 17% annual revenue increase for clients through secure,
-                        compliant network solutions</li>
-                    <li><strong>Process Improvement:</strong> Automated audit processes with bash scripting,
-                        significantly improving efficiency and compliance</li>
-                    <li><strong>Multi-Platform Expertise:</strong> Successfully managed systems across Linux, macOS, and
-                        Windows environments</li>
-                </ul>
-            </div>
+    <h2>Projects</h2>
 
-            <div class="section">
-                <h3>TECHNICAL PROJECTS</h3>
-                <div class="job">
-                    <div class="job-title">Personal Cloud Portfolio Website</div>
-                    <ul>
-                        <li>Architected and deployed complete AWS infrastructure using Terraform for Infrastructure as
-                            Code</li>
-                        <li>Implemented serverless architecture with Lambda, API Gateway, and S3 for static website
-                            hosting</li>
-                        <li>Configured CloudFront CDN with custom domain and SSL certificate management via Route 53
-                        </li>
-                        <li>Integrated AWS Cognito for secure user authentication and authorization</li>
-                        <li>Designed VPC with public/private subnets, NAT gateways, and security groups for network
-                            isolation</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div class="proj-head">Personal Professional Portfolio - <a href="https://itsamha.com">https://itsamha.com</a></div>
+    <p class="proj-tech">Technologies: AWS (Terraform, S3, CloudFront, Route 53, Cognito, VPC, Lambda, API Gateway),
+        HTML/CSS/JavaScript</p>
+    <p>Developed and deployed a dynamic personal portfolio website (itsamha.com) to showcase skills in scripting,
+        Terraform, and cost management using AWS. Engineered a secure, scalable infrastructure using Terraform for IaC
+        provisioning, S3 with CloudFront for global CDN-hosted static assets, Route 53 for DNS and SSL management, VPC
+        for isolated networking, and Lambda/API Gateway for serverless backend APIs ensuring 99.9% uptime and seamless
+        performance.</p>
+
+    <div class="proj-head">Kubernetes Homelab -
+        <a href="https://github.com/shiferaxa/athena-k3s-fleet">https://github.com/shiferaxa/athena-k3s-fleet</a></div>
+    <p class="proj-tech">Technologies: Flux GitOps, Kubernetes, Containerd, Headlamp</p>
+    <p>Engineered a sophisticated, self-healing Kubernetes Homelab leveraging the principles of GitOps with Flux. This
+        robust architecture, hosted on bare metal, establishes a declarative and version-controlled infrastructure
+        where the desired state is defined entirely in a Git repository. Currently hosting a centralized control plane
+        via Headlamp, this environment serves as a dynamic staging ground for developing, testing, and demonstrating
+        advanced infrastructure automation, ensuring configuration drifts are instantaneously reconciled to maintain
+        state fidelity.</p>
+
+    <div class="proj-head">Fireferral Referral Tracking Web Application</div>
+    <p class="proj-tech">Technologies: Google Cloud Platform (Firebase, Firestore, Cloud Functions, Firebase Hosting),
+        Node.js, React, HTML/CSS/JavaScript</p>
+    <p>Designed and deployed Fireferral, a referral tracking web application hosted at
+        <a href="https://fireferral.web.app">https://fireferral.web.app</a>, to streamline professional networking by
+        enabling users to manage, track, and analyze referral campaigns with real-time analytics. Architected a fully
+        serverless infrastructure on Google Cloud Platform, utilizing Firebase Hosting for the React-based frontend,
+        Firestore for scalable NoSQL data storage, and Cloud Functions for serverless API logic, achieving 99.99%
+        availability and reducing latency by 25% through optimized indexing and caching. Implemented secure user
+        authentication via Firebase Authentication, ensuring data privacy and compliance, while the application's
+        responsive UI with interactive dashboards showcases expertise in building user-focused, cloud-native
+        solutions.</p>
+
+    <h2>Additional Information</h2>
+    <p>Languages: English (Native), Amharic (Ethiopian) (Native)<br>
+        Work Authorization: U.S. Citizen<br>
+        Location: Available for remote work across U.S. Market</p>
 </body>
 
 </html>

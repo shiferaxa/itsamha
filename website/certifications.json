@@ -1,0 +1,141 @@
+{
+  "generated_at": "2026-08-21T22:54:51Z",
+  "source": "https://www.credly.com/users/amha-shiferaw",
+  "featured": [
+    {
+      "name": "CCNA",
+      "issuer": "Cisco",
+      "date": "2026-08-12",
+      "image": "https://images.credly.com/size/220x220/images/683783d8-eaac-4c37-a14d-11bd8a36321d/ccna_600.png",
+      "url": "https://www.credly.com/badges/e33c1239-4c14-46ae-98e0-2632f1905c0d/public_url"
+    },
+    {
+      "name": "CKA: Certified Kubernetes Administrator",
+      "issuer": "The Linux Foundation",
+      "date": "2026-08-11",
+      "image": "https://images.credly.com/size/220x220/images/8b8ed108-e77d-4396-ac59-2504583b9d54/cka_from_cncfsite__281_29.png",
+      "url": "https://www.credly.com/badges/22deac89-7d14-44c6-adfb-65398ec64e99/public_url"
+    },
+    {
+      "name": "CKAD: Certified Kubernetes Application Developer",
+      "issuer": "The Linux Foundation",
+      "date": "2026-08-07",
+      "image": "https://images.credly.com/size/220x220/images/cc8adc83-1dc6-4d57-8e20-22171247e052/blob",
+      "url": "https://www.credly.com/badges/0198a875-4c18-4a66-96b1-7e1ba627e321/public_url"
+    },
+    {
+      "name": "Associate Cloud Engineer Certification",
+      "issuer": "Google Cloud",
+      "date": "2025-12-21",
+      "image": "https://images.credly.com/size/220x220/images/08096465-cbfc-4c3e-93e5-93c5aa61f23e/image.png",
+      "url": "https://www.credly.com/badges/0e90aea1-9a06-4b98-b0ea-bfea2dec5098/public_url"
+    },
+    {
+      "name": "Microsoft Certified: Azure Administrator Associate",
+      "issuer": "Microsoft",
+      "date": "2025-12-15",
+      "image": "https://learn.microsoft.com/media/learn/certification/badges/microsoft-certified-associate-badge.svg",
+      "url": "https://learn.microsoft.com/api/credentials/share/en-us/AmhaShiferaw-8647/E83374B04C637115?sharingId=2F5E4D6991CF20C7"
+    },
+    {
+      "name": "HashiCorp Certified: Terraform Associate (003)",
+      "issuer": "HashiCorp",
+      "date": "2025-09-20",
+      "image": "https://images.credly.com/size/220x220/images/0dc62494-dc94-469a-83af-e35309f27356/blob",
+      "url": "https://www.credly.com/badges/212a6cd5-32e9-4e8d-9aaa-a24840527b05/public_url"
+    },
+    {
+      "name": "AWS Certified Solutions Architect \u2013 Associate",
+      "issuer": "Amazon Web Services",
+      "date": "2025-08-05",
+      "image": "https://images.credly.com/size/220x220/images/0e284c3f-5164-4b21-8660-0d84737941bc/image.png",
+      "url": "https://www.credly.com/badges/8b637bc5-badc-4c16-8881-ef378ae800f6/public_url"
+    },
+    {
+      "name": "AWS Certified Cloud Practitioner",
+      "issuer": "Amazon Web Services",
+      "date": "2025-05-23",
+      "image": "https://images.credly.com/size/220x220/images/00634f82-b07f-4bbd-a6bb-53de397fc3a6/image.png",
+      "url": "https://www.credly.com/badges/f7d8b469-8ba9-4b89-8114-e2fa1ac27df7/public_url"
+    }
+  ],
+  "badges": [
+    {
+      "name": "Akamai Automation and DevOps",
+      "issuer": "Akamai",
+      "date": "2026-05-07",
+      "image": "https://images.credly.com/size/220x220/images/2aa0eef0-afcf-4036-b9ee-92617248450b/image.png",
+      "url": "https://www.credly.com/badges/daf6d041-c063-42ef-8608-07c885cee712/public_url"
+    },
+    {
+      "name": "Google AI Essentials V1",
+      "issuer": "Coursera",
+      "date": "2026-05-01",
+      "image": "https://images.credly.com/size/220x220/images/ea3eec65-ddad-4242-9c59-1defac0fa2d9/image.png",
+      "url": "https://www.credly.com/badges/aadd7aca-5c42-4e00-b8e3-e2fed131e7eb/public_url"
+    },
+    {
+      "name": "Introduction to Cybersecurity",
+      "issuer": "Cisco",
+      "date": "2025-12-02",
+      "image": "https://images.credly.com/size/220x220/images/af8c6b4e-fc31-47c4-8dcb-eb7a2065dc5b/I2CS__1_.png",
+      "url": "https://www.credly.com/badges/9c4bbabd-ddf2-4e23-8c8f-a53c1866bfc3/public_url"
+    },
+    {
+      "name": "Interact with Dashboards and Reports",
+      "issuer": "Tableau",
+      "date": "2025-09-16",
+      "image": "https://images.credly.com/size/220x220/images/82e99942-72c6-4f27-9f50-efc58e409a65/interact-dashboards-2048.png",
+      "url": "https://www.credly.com/badges/17e42675-7e31-4bc9-8f4e-13357809597c/public_url"
+    },
+    {
+      "name": "AI Fundamentals with IBM SkillsBuild",
+      "issuer": "Cisco",
+      "date": "2025-09-09",
+      "image": "https://images.credly.com/size/220x220/images/26c21273-c0ab-485b-98a7-f1212dcb82b8/image.png",
+      "url": "https://www.credly.com/badges/c647c704-0c6b-4b40-a2c5-7096fbdd32b6/public_url"
+    },
+    {
+      "name": "Artificial Intelligence Fundamentals",
+      "issuer": "IBM SkillsBuild",
+      "date": "2025-09-09",
+      "image": "https://images.credly.com/size/220x220/images/82b908e1-fdcd-4785-9d32-97f11ccbcf08/image.png",
+      "url": "https://www.credly.com/badges/5b2d8b1e-4bfc-4717-8f7a-36e372577a1b/public_url"
+    },
+    {
+      "name": "Career Path - DBA - FOUNDATIONAL",
+      "issuer": "Teradata",
+      "date": "2025-08-28",
+      "image": "https://images.credly.com/size/220x220/images/f64f6f4f-4de8-4890-bf7c-df48a4610bd1/image.png",
+      "url": "https://www.credly.com/badges/38c89f40-44ae-460d-9eab-fcfe16b28169/public_url"
+    },
+    {
+      "name": "AWS Cloud Quest: Networking - Training Badge",
+      "issuer": "Amazon Web Services",
+      "date": "2025-06-05",
+      "image": "https://images.credly.com/size/220x220/images/6bf3f80e-4cba-4b4c-bf45-85aec42233ff/blob",
+      "url": "https://www.credly.com/badges/a3cbfde9-564a-4399-97d0-3dc929bb414a/public_url"
+    },
+    {
+      "name": "AWS Cloud Quest: Data Analytics - Training Badge",
+      "issuer": "Amazon Web Services",
+      "date": "2025-06-01",
+      "image": "https://images.credly.com/size/220x220/images/530be67d-1ce0-46d4-8a36-3f277d5687bc/blob",
+      "url": "https://www.credly.com/badges/35588bb2-9827-485e-9595-4db3a8ed4f08/public_url"
+    },
+    {
+      "name": "AWS Cloud Quest: Solutions Architect - Training Badge",
+      "issuer": "Amazon Web Services",
+      "date": "2024-02-01",
+      "image": "https://images.credly.com/size/220x220/images/320bfb8f-e722-41b9-a70a-c3fb07402981/blob",
+      "url": "https://www.credly.com/badges/35ce63fb-8f61-4f77-8607-b7801e06ffad/public_url"
+    },
+    {
+      "name": "AWS Cloud Quest: Cloud Practitioner - Training Badge",
+      "issuer": "Amazon Web Services",
+      "date": "2024-01-13",
+      "image": "https://images.credly.com/size/220x220/images/30816e43-2550-4e1c-be22-3f03c5573bb9/blob",
+      "url": "https://www.credly.com/badges/2dac9c56-e811-41ae-8c64-266e42f1d5e3/public_url"
+    }
+  ]
+}

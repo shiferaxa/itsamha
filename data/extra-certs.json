@@ -1,0 +1,13 @@
+{
+  "_comment": "Certifications that are not on Credly. Merged into website/certifications.json by scripts/fetch_certifications.py. Dates are ISO (YYYY-MM-DD) and drive sort order.",
+  "featured": [
+    {
+      "name": "Microsoft Certified: Azure Administrator Associate",
+      "issuer": "Microsoft",
+      "date": "2025-12-15",
+      "image": "https://learn.microsoft.com/media/learn/certification/badges/microsoft-certified-associate-badge.svg",
+      "url": "https://learn.microsoft.com/api/credentials/share/en-us/AmhaShiferaw-8647/E83374B04C637115?sharingId=2F5E4D6991CF20C7"
+    }
+  ],
+  "badges": []
+}

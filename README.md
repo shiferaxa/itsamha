@@ -1,42 +1,55 @@
-# Personal Portfolio Website
+# itsamha.com
 
-My personal portfolio website built on AWS infrastructure. This project demonstrates cloud engineering skills through practical implementation of various AWS services.
+Personal portfolio site — [itsamha.com](https://itsamha.com). Static site on AWS
+(S3 + CloudFront), provisioned with Terraform, deployed automatically by GitHub
+Actions.
 
-[MY SITE](https://itsamha.com)
+## How it works
 
-## Architecture
+- **Site** — plain HTML/CSS/JS in [`website/`](website/). Dark, minimal, no
+  frameworks.
+- **Certifications** — pulled from
+  [Credly](https://www.credly.com/users/amha-shiferaw) at build time by
+  [`scripts/fetch_certifications.py`](scripts/fetch_certifications.py), which
+  writes `website/certifications.json`. Certs that aren't on Credly (e.g.
+  Microsoft Learn) live in [`data/extra-certs.json`](data/extra-certs.json) and
+  get merged in. Credly badges marked `Certification` are featured; training
+  badges render as a secondary strip.
+- **Contact form** — posts to an existing Lambda behind API Gateway
+  (see [`lambda/`](lambda/) and [`terraform/`](terraform/)).
+- **CI/CD** — [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)
+  runs on every push to `main`, on a weekly schedule (so new Credly badges
+  appear without a code change), and on manual dispatch. It fetches
+  certifications, syncs `website/` to S3, and invalidates CloudFront.
 
-The site uses these AWS services:
-- **Terraform**: Infrastructure as Code
-- **S3**: Static website hosting
-- **CloudFront**: Content delivery network
-- **VPC/Networking**: Custom networking setup
-- **Lambda**: Serverless backend functions
-- **API Gateway**: REST API endpoints
+## Deploying
 
-## Infrastructure Components
+Push to `main`. That's it.
 
-- S3 bucket for static website hosting
-- CloudFront distribution for global content delivery
-- Lambda functions for API endpoints
-- VPC with public and private subnets
-- API Gateway for REST API management
+Requires two GitHub Actions secrets (Settings → Secrets and variables →
+Actions):
 
-## Deployment
+| Secret | Value |
+| --- | --- |
+| `AWS_ACCESS_KEY_ID` | Access key for the `github-actions-itsamha` IAM user |
+| `AWS_SECRET_ACCESS_KEY` | Its secret key |
+
+The IAM user is scoped to exactly two things: syncing the `itsamha.com` bucket
+and invalidating the site's CloudFront distribution.
+
+## Local preview
+
+```bash
+python scripts/fetch_certifications.py   # refresh certifications.json
+cd website && python -m http.server 8000
+```
+
+## Infrastructure
+
+Provisioned with Terraform in [`terraform/`](terraform/): S3 (private, OAC),
+CloudFront, Route 53, Lambda + API Gateway for the contact form.
 
 ```bash
 cd terraform
-terraform init
-terraform plan
-terraform apply
-```
-
-See `docs/DEPLOYMENT.md` for detailed instructions.
-
-## Project Structure
-
-```
-├── terraform/           # Infrastructure as Code
-├── website/            # Static website files
-├── lambda/             # Serverless functions
+terraform init && terraform plan
 ```

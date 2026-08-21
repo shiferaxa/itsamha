@@ -1,298 +1,122 @@
-// Configuration
-const CONFIG = {
-    apiGatewayUrl: 'https://qoc5759x8c.execute-api.us-east-1.amazonaws.com/prod'
-};
+// itsamha.com — certifications rendering + contact form
+const CONTACT_API = 'https://qoc5759x8c.execute-api.us-east-1.amazonaws.com/prod';
 
-// DOM Content Loaded
-document.addEventListener('DOMContentLoaded', function() {
-    initializeApp();
-    setupEventListeners();
-    loadPortfolioData();
+document.addEventListener('DOMContentLoaded', () => {
+    loadCertifications();
+    setupContactForm();
+    const year = document.getElementById('year');
+    if (year) year.textContent = String(new Date().getFullYear());
 });
 
-// Initialize application
-function initializeApp() {
-    // Setup smooth scrolling
-    setupSmoothScrolling();
-}
-
-// Setup event listeners
-function setupEventListeners() {
-    // Contact form submission
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', handleContactForm);
-    }
-    
-    // Auth button removed
-    
-    // Navigation links
-    const navLinks = document.querySelectorAll('.nav-link');
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            const targetElement = document.getElementById(targetId);
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
-}
-
-// Setup smooth scrolling for hero buttons
-function setupSmoothScrolling() {
-    const heroButtons = document.querySelectorAll('.hero-buttons .btn');
-    heroButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            if (href.startsWith('#')) {
-                e.preventDefault();
-                const targetId = href.substring(1);
-                const targetElement = document.getElementById(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            }
-        });
-    });
-}
-
-// Load portfolio data from API
-async function loadPortfolioData() {
+// certifications.json is generated at build time from Credly
+// (scripts/fetch_certifications.py) and deployed with the site.
+async function loadCertifications() {
+    const grid = document.getElementById('certs-grid');
+    if (!grid) return;
     try {
-        const response = await fetch(`${CONFIG.apiGatewayUrl}/portfolio`);
-        
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        const data = await response.json();
-        
-        // Render projects
-        renderProjects(data.projects);
-        
-        // Render skills
-        renderSkills(data.skills);
-        
-        // Render certifications
-        renderCertifications(data.certifications);
-        
-    } catch (error) {
-        console.error('Error loading portfolio data:', error);
-        
-        // Fallback to static data
-        loadFallbackData();
+        const resp = await fetch('certifications.json');
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        const data = await resp.json();
+        renderCerts(grid, data.featured || []);
+        renderBadges(data.badges || []);
+    } catch (err) {
+        console.error('Failed to load certifications:', err);
+        grid.innerHTML = '<p class="loading">Couldn\'t load certifications — ' +
+            'see them on <a href="https://www.credly.com/users/amha-shiferaw" ' +
+            'target="_blank" rel="noopener">Credly</a>.</p>';
     }
 }
 
-// Load fallback data if API fails
-function loadFallbackData() {
-    const fallbackProjects = [
-        {
-            id: 1,
-            title: 'Personal Cloud Portfolio Website',
-            description: 'This very website - a complete AWS cloud architecture showcase',
-            technologies: ['Terraform', 'S3', 'CloudFront', 'Route 53', 'Lambda', 'API Gateway', 'VPC'],
-            highlights: [
-                'Complete Infrastructure as Code with Terraform',
-                'Serverless architecture with Lambda and API Gateway',
-                'Global CDN with CloudFront and custom domain',
-                'Cost-optimized design (~$5/month)',
-                'Responsive design with modern CSS'
-            ]
-        },
-        {
-            id: 2,
-            title: 'FireFerral',
-            description: 'A modern web application for managing referrals and connections',
-            technologies: ['React', 'Firebase', 'JavaScript', 'CSS', 'Web App'],
-            highlights: [
-                'Modern responsive web application',
-                'Firebase backend integration',
-                'User-friendly referral management system',
-                'Deployed on Firebase hosting'
-            ],
-            url: 'https://fireferral.web.app'
+function formatDate(iso) {
+    const d = new Date(iso + 'T00:00:00');
+    if (isNaN(d)) return iso;
+    return d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+}
+
+function renderCerts(grid, certs) {
+    grid.innerHTML = '';
+    for (const cert of certs) {
+        const el = document.createElement(cert.url ? 'a' : 'div');
+        el.className = 'cert-card';
+        if (cert.url) {
+            el.href = cert.url;
+            el.target = '_blank';
+            el.rel = 'noopener';
         }
-    ];
-    
-    const fallbackSkills = {
-        'cloud_platforms': ['AWS', 'Azure', 'Google Cloud'],
-        'infrastructure': ['Terraform', 'CloudFormation', 'Ansible'],
-        'containers': ['Docker', 'Kubernetes', 'EKS', 'ECS'],
-        'monitoring': ['CloudWatch', 'Prometheus', 'Grafana']
-    };
-    
-    renderProjects(fallbackProjects);
-    renderSkills(fallbackSkills);
-    
-    // Fallback certifications
-    const fallbackCertifications = [
-        {
-            name: 'AWS Certified Solutions Architect - Associate',
-            issuer: 'Amazon Web Services',
-            date: 'August 2025',
-            credly_url: 'https://www.credly.com/users/amha-shiferaw'
-        },
-        {
-            name: 'AWS Certified Cloud Practitioner',
-            issuer: 'Amazon Web Services',
-            date: 'May 2025',
-            credly_url: 'https://www.credly.com/users/amha-shiferaw'
-        }
-    ];
-    renderCertifications(fallbackCertifications);
+        const img = document.createElement('img');
+        img.src = cert.image;
+        img.alt = '';
+        img.loading = 'lazy';
+        const text = document.createElement('div');
+        const name = document.createElement('div');
+        name.className = 'cert-name';
+        name.textContent = cert.name;
+        const meta = document.createElement('div');
+        meta.className = 'cert-meta';
+        meta.textContent = `${cert.issuer} · ${formatDate(cert.date)}`;
+        text.append(name, meta);
+        el.append(img, text);
+        grid.appendChild(el);
+    }
 }
 
-// Render projects
-function renderProjects(projects) {
-    const projectsGrid = document.getElementById('projects-grid');
-    if (!projectsGrid) return;
-    
-    projectsGrid.innerHTML = '';
-    
-    projects.forEach(project => {
-        const projectCard = document.createElement('div');
-        projectCard.className = 'project-card';
-        
-        const techTags = project.technologies.map(tech => 
-            `<span class="tech-tag">${tech}</span>`
-        ).join('');
-        
-        const highlights = project.highlights.map(highlight => 
-            `<li>${highlight}</li>`
-        ).join('');
-        
-        const projectLink = project.url ? `<a href="${project.url}" target="_blank" class="project-link">View Project →</a>` : '';
-        
-        projectCard.innerHTML = `
-            <h3>${project.title}</h3>
-            <p>${project.description}</p>
-            <div class="project-tech">
-                ${techTags}
-            </div>
-            <ul class="project-highlights">
-                ${highlights}
-            </ul>
-            ${projectLink}
-        `;
-        
-        projectsGrid.appendChild(projectCard);
-    });
+function renderBadges(badges) {
+    if (!badges.length) return;
+    const wrap = document.getElementById('badges-row-wrap');
+    const row = document.getElementById('badges-row');
+    if (!wrap || !row) return;
+    row.innerHTML = '';
+    for (const badge of badges) {
+        const a = document.createElement('a');
+        a.href = badge.url;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.title = `${badge.name} — ${badge.issuer}`;
+        const img = document.createElement('img');
+        img.src = badge.image;
+        img.alt = badge.name;
+        img.loading = 'lazy';
+        a.appendChild(img);
+        row.appendChild(a);
+    }
+    wrap.hidden = false;
 }
 
-// Render skills
-function renderSkills(skills) {
-    const skillsContent = document.getElementById('skills-content');
-    if (!skillsContent) return;
-    
-    skillsContent.innerHTML = '';
-    
-    Object.entries(skills).forEach(([category, skillList]) => {
-        const skillCategory = document.createElement('div');
-        skillCategory.className = 'skill-category';
-        
-        const skillTags = skillList.map(skill => 
-            `<span class="skill-tag">${skill}</span>`
-        ).join('');
-        
-        skillCategory.innerHTML = `
-            <h3>${category.replace('_', ' ')}</h3>
-            <div class="skill-tags">
-                ${skillTags}
-            </div>
-        `;
-        
-        skillsContent.appendChild(skillCategory);
-    });
-}
-
-// Handle contact form submission
-async function handleContactForm(e) {
-    e.preventDefault();
-    
-    const form = e.target;
-    const formData = new FormData(form);
-    
-    const contactData = {
-        name: formData.get('name'),
-        email: formData.get('email'),
-        subject: formData.get('subject') || 'Contact Form Submission',
-        message: formData.get('message')
-    };
-    
-    // Show loading state
-    const submitBtn = form.querySelector('button[type="submit"]');
-    const originalText = submitBtn.textContent;
-    submitBtn.textContent = 'Sending...';
-    submitBtn.disabled = true;
-    
-    try {
-        const response = await fetch(`${CONFIG.apiGatewayUrl}/contact`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(contactData)
-        });
-        
-        const result = await response.json();
-        
-        if (response.ok) {
-            // Success
-            alert('Thank you for your message! I will get back to you soon.');
+function setupContactForm() {
+    const form = document.getElementById('contact-form');
+    if (!form) return;
+    const status = document.getElementById('form-status');
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = form.querySelector('button[type="submit"]');
+        const formData = new FormData(form);
+        btn.disabled = true;
+        status.className = 'form-status';
+        status.textContent = 'Sending…';
+        try {
+            const resp = await fetch(`${CONTACT_API}/contact`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: formData.get('name'),
+                    email: formData.get('email'),
+                    subject: formData.get('subject') || 'Contact Form Submission',
+                    message: formData.get('message'),
+                }),
+            });
+            if (!resp.ok) {
+                const body = await resp.json().catch(() => ({}));
+                throw new Error(body.error || `HTTP ${resp.status}`);
+            }
+            status.classList.add('ok');
+            status.textContent = 'Thanks — your message was sent.';
             form.reset();
-        } else {
-            // Error
-            alert(`Error: ${result.error || 'Failed to send message'}`);
+        } catch (err) {
+            console.error('Contact form error:', err);
+            status.classList.add('err');
+            status.textContent = 'Sending failed — email me directly instead.';
+        } finally {
+            btn.disabled = false;
         }
-        
-    } catch (error) {
-        console.error('Error sending contact form:', error);
-        alert('Failed to send message. Please try again later.');
-    } finally {
-        // Reset button state
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
-    }
-}
-
-// Authentication functions removed
-
-// OAuth functions removed
-
-// Render certifications
-function renderCertifications(certifications) {
-    const certificationsContent = document.getElementById('certifications-content');
-    if (!certificationsContent) return;
-    
-    certificationsContent.innerHTML = '';
-    
-    certifications.forEach(cert => {
-        const certCard = document.createElement('div');
-        certCard.className = 'certification-card';
-        
-        certCard.innerHTML = `
-            <h3>${cert.name}</h3>
-            <div class="issuer">${cert.issuer}</div>
-            <div class="date">Earned: ${cert.date}</div>
-            <a href="${cert.credly_url}" target="_blank" class="credential">
-                View on Credly
-            </a>
-        `;
-        
-        certificationsContent.appendChild(certCard);
     });
-}
-
-// Check if we're on the callback page
-if (window.location.pathname === '/callback') {
-    handleOAuthCallback();
 }

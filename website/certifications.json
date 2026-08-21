@@ -1,14 +1,7 @@
 {
-  "generated_at": "2026-08-21T22:54:51Z",
+  "generated_at": "2026-08-21T23:59:01Z",
   "source": "https://www.credly.com/users/amha-shiferaw",
   "featured": [
-    {
-      "name": "CCNA",
-      "issuer": "Cisco",
-      "date": "2026-08-12",
-      "image": "https://images.credly.com/size/220x220/images/683783d8-eaac-4c37-a14d-11bd8a36321d/ccna_600.png",
-      "url": "https://www.credly.com/badges/e33c1239-4c14-46ae-98e0-2632f1905c0d/public_url"
-    },
     {
       "name": "CKA: Certified Kubernetes Administrator",
       "issuer": "The Linux Foundation",
@@ -22,6 +15,13 @@
       "date": "2026-08-07",
       "image": "https://images.credly.com/size/220x220/images/cc8adc83-1dc6-4d57-8e20-22171247e052/blob",
       "url": "https://www.credly.com/badges/0198a875-4c18-4a66-96b1-7e1ba627e321/public_url"
+    },
+    {
+      "name": "AWS Certified Solutions Architect \u2013 Associate",
+      "issuer": "Amazon Web Services",
+      "date": "2025-08-05",
+      "image": "https://images.credly.com/size/220x220/images/0e284c3f-5164-4b21-8660-0d84737941bc/image.png",
+      "url": "https://www.credly.com/badges/8b637bc5-badc-4c16-8881-ef378ae800f6/public_url"
     },
     {
       "name": "Associate Cloud Engineer Certification",
@@ -38,18 +38,18 @@
       "url": "https://learn.microsoft.com/api/credentials/share/en-us/AmhaShiferaw-8647/E83374B04C637115?sharingId=2F5E4D6991CF20C7"
     },
     {
+      "name": "CCNA",
+      "issuer": "Cisco",
+      "date": "2026-08-12",
+      "image": "https://images.credly.com/size/220x220/images/683783d8-eaac-4c37-a14d-11bd8a36321d/ccna_600.png",
+      "url": "https://www.credly.com/badges/e33c1239-4c14-46ae-98e0-2632f1905c0d/public_url"
+    },
+    {
       "name": "HashiCorp Certified: Terraform Associate (003)",
       "issuer": "HashiCorp",
       "date": "2025-09-20",
       "image": "https://images.credly.com/size/220x220/images/0dc62494-dc94-469a-83af-e35309f27356/blob",
       "url": "https://www.credly.com/badges/212a6cd5-32e9-4e8d-9aaa-a24840527b05/public_url"
-    },
-    {
-      "name": "AWS Certified Solutions Architect \u2013 Associate",
-      "issuer": "Amazon Web Services",
-      "date": "2025-08-05",
-      "image": "https://images.credly.com/size/220x220/images/0e284c3f-5164-4b21-8660-0d84737941bc/image.png",
-      "url": "https://www.credly.com/badges/8b637bc5-badc-4c16-8881-ef378ae800f6/public_url"
     },
     {
       "name": "AWS Certified Cloud Practitioner",

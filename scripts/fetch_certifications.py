@@ -101,14 +101,31 @@ def main():
         featured.extend(extras.get("featured", []))
         other.extend(extras.get("badges", []))
 
-    def sort_key(cert):
+    def date_key(cert):
         try:
             return date.fromisoformat(cert["date"])
         except (ValueError, KeyError):
             return date.min
 
-    featured.sort(key=sort_key, reverse=True)
-    other.sort(key=sort_key, reverse=True)
+    # Explicit display order for the featured certs; anything not listed
+    # follows, newest first.
+    PRIORITY = [
+        "CKA:",
+        "CKAD:",
+        "AWS Certified Solutions Architect",
+        "Associate Cloud Engineer",
+        "Azure Administrator",
+        "CCNA",
+    ]
+
+    def priority_index(cert):
+        for i, pattern in enumerate(PRIORITY):
+            if pattern in cert["name"]:
+                return i
+        return len(PRIORITY)
+
+    featured.sort(key=lambda c: (priority_index(c), -date_key(c).toordinal()))
+    other.sort(key=date_key, reverse=True)
 
     OUTPUT.write_text(json.dumps({
         "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),

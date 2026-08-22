@@ -52,7 +52,7 @@
   <line class="flow" x1="794" y1="102" x2="836" y2="102" marker-end="url(#arrow)"/>
 
   <path class="flow" d="M 89 70 C 89 22 724 22 724 70" marker-end="url(#arrow)"/>
-  <text class="flow-label" x="406" y="40" text-anchor="middle">contact form</text>
+  <text class="flow-label" x="406" y="22" text-anchor="middle">contact form</text>
 
   <path class="flow-dim" d="M 154 210 C 210 204 262 172 284 142" marker-end="url(#arrow-dim)"/>
 

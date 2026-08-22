@@ -27,12 +27,6 @@ async function loadCertifications() {
     }
 }
 
-function formatDate(iso) {
-    const d = new Date(iso + 'T00:00:00');
-    if (isNaN(d)) return iso;
-    return d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
-}
-
 function renderCerts(grid, certs) {
     grid.innerHTML = '';
     for (const cert of certs) {
@@ -53,7 +47,7 @@ function renderCerts(grid, certs) {
         name.textContent = cert.name;
         const meta = document.createElement('div');
         meta.className = 'cert-meta';
-        meta.textContent = `${cert.issuer} · ${formatDate(cert.date)}`;
+        meta.textContent = cert.issuer;
         text.append(name, meta);
         el.append(img, text);
         grid.appendChild(el);

@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" font-family="Segoe UI, system-ui, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6ea3ff"/>
+    </marker>
+    <marker id="arrow-dim" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6579"/>
+    </marker>
+  </defs>
+
+  <style>
+    .box { fill: #11151d; stroke: #212836; stroke-width: 1.5; }
+    .box-accent { fill: #11151d; stroke: #6ea3ff; stroke-width: 1.5; }
+    .label { fill: #e8edf4; font-size: 15px; font-weight: 600; }
+    .sub { fill: #94a0b4; font-size: 11.5px; }
+    .flow { stroke: #6ea3ff; stroke-width: 1.5; fill: none; }
+    .flow-dim { stroke: #5a6579; stroke-width: 1.5; fill: none; stroke-dasharray: 5 4; }
+    .flow-label { fill: #94a0b4; font-size: 11px; }
+    .lane { fill: #94a0b4; font-size: 11px; font-weight: 600; letter-spacing: 1.5px; }
+  </style>
+
+  <!-- ===================== serving lane ===================== -->
+  <text class="lane" x="24" y="34">SERVING</text>
+
+  <rect class="box" x="24" y="70" width="130" height="64" rx="10"/>
+  <text class="label" x="89" y="98" text-anchor="middle">Visitor</text>
+  <text class="sub" x="89" y="117" text-anchor="middle">https://itsamha.com</text>
+
+  <rect class="box-accent" x="214" y="70" width="150" height="64" rx="10"/>
+  <text class="label" x="289" y="98" text-anchor="middle">CloudFront</text>
+  <text class="sub" x="289" y="117" text-anchor="middle">global CDN edge</text>
+
+  <rect class="box" x="434" y="70" width="150" height="64" rx="10"/>
+  <text class="label" x="509" y="98" text-anchor="middle">S3 bucket</text>
+  <text class="sub" x="509" y="117" text-anchor="middle">private, OAC only</text>
+
+  <rect class="box" x="654" y="70" width="140" height="64" rx="10"/>
+  <text class="label" x="724" y="98" text-anchor="middle">API Gateway</text>
+  <text class="sub" x="724" y="117" text-anchor="middle">contact form POST</text>
+
+  <rect class="box" x="844" y="70" width="96" height="64" rx="10"/>
+  <text class="label" x="892" y="98" text-anchor="middle">Lambda</text>
+  <text class="sub" x="892" y="117" text-anchor="middle">serverless</text>
+
+  <rect class="box" x="24" y="188" width="130" height="58" rx="10"/>
+  <text class="label" x="89" y="213" text-anchor="middle">Route 53</text>
+  <text class="sub" x="89" y="231" text-anchor="middle">DNS + ACM cert</text>
+
+  <line class="flow" x1="154" y1="102" x2="206" y2="102" marker-end="url(#arrow)"/>
+  <line class="flow" x1="364" y1="102" x2="426" y2="102" marker-end="url(#arrow)"/>
+  <text class="flow-label" x="395" y="92" text-anchor="middle">OAC</text>
+  <line class="flow" x1="794" y1="102" x2="836" y2="102" marker-end="url(#arrow)"/>
+
+  <path class="flow" d="M 89 70 C 89 22 724 22 724 70" marker-end="url(#arrow)"/>
+  <text class="flow-label" x="406" y="40" text-anchor="middle">contact form</text>
+
+  <path class="flow-dim" d="M 154 210 C 210 204 262 172 284 142" marker-end="url(#arrow-dim)"/>
+
+  <!-- ===================== deploy lane ===================== -->
+  <text class="lane" x="24" y="330">DEPLOY</text>
+
+  <rect class="box" x="24" y="348" width="150" height="64" rx="10"/>
+  <text class="label" x="99" y="376" text-anchor="middle">GitHub repo</text>
+  <text class="sub" x="99" y="395" text-anchor="middle">push to main</text>
+
+  <rect class="box-accent" x="244" y="348" width="170" height="64" rx="10"/>
+  <text class="label" x="329" y="376" text-anchor="middle">GitHub Actions</text>
+  <text class="sub" x="329" y="395" text-anchor="middle">push · weekly · manual</text>
+
+  <rect class="box" x="484" y="348" width="170" height="64" rx="10"/>
+  <text class="label" x="569" y="376" text-anchor="middle">Credly API</text>
+  <text class="sub" x="569" y="395" text-anchor="middle">public badges feed</text>
+
+  <rect class="box" x="714" y="348" width="226" height="64" rx="10"/>
+  <text class="label" x="827" y="376" text-anchor="middle">Terraform</text>
+  <text class="sub" x="827" y="395" text-anchor="middle">all infrastructure provisioned as code</text>
+
+  <line class="flow" x1="174" y1="380" x2="236" y2="380" marker-end="url(#arrow)"/>
+  <line class="flow-dim" x1="484" y1="380" x2="422" y2="380" marker-end="url(#arrow-dim)"/>
+  <text class="flow-label" x="453" y="368" text-anchor="middle">fetch certs</text>
+
+  <path class="flow" d="M 345 348 C 365 250 480 185 506 142" marker-end="url(#arrow)"/>
+  <text class="flow-label" x="452" y="235" text-anchor="start">sync site</text>
+
+  <path class="flow" d="M 289 348 C 274 260 284 185 291 142" marker-end="url(#arrow)"/>
+  <text class="flow-label" x="270" y="250" text-anchor="end">invalidate cache</text>
+</svg>

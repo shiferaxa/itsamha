@@ -1,4 +1,4 @@
-// itsamha.com — certifications rendering + contact form
+// itsamha.com: certifications rendering + contact form
 const CONTACT_API = 'https://qoc5759x8c.execute-api.us-east-1.amazonaws.com/prod';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -21,8 +21,8 @@ async function loadCertifications() {
         renderBadges(data.badges || []);
     } catch (err) {
         console.error('Failed to load certifications:', err);
-        grid.innerHTML = '<p class="loading">Couldn\'t load certifications — ' +
-            'see them on <a href="https://www.credly.com/users/amha-shiferaw" ' +
+        grid.innerHTML = '<p class="loading">Couldn\'t load certifications. ' +
+            'See them on <a href="https://www.credly.com/users/amha-shiferaw" ' +
             'target="_blank" rel="noopener">Credly</a>.</p>';
     }
 }
@@ -71,7 +71,7 @@ function renderBadges(badges) {
         a.href = badge.url;
         a.target = '_blank';
         a.rel = 'noopener';
-        a.title = `${badge.name} — ${badge.issuer}`;
+        a.title = `${badge.name} (${badge.issuer})`;
         const img = document.createElement('img');
         img.src = badge.image;
         img.alt = badge.name;
@@ -109,12 +109,12 @@ function setupContactForm() {
                 throw new Error(body.error || `HTTP ${resp.status}`);
             }
             status.classList.add('ok');
-            status.textContent = 'Thanks — your message was sent.';
+            status.textContent = 'Thanks, your message was sent.';
             form.reset();
         } catch (err) {
             console.error('Contact form error:', err);
             status.classList.add('err');
-            status.textContent = 'Sending failed — email me directly instead.';
+            status.textContent = 'Sending failed. Email me directly instead.';
         } finally {
             btn.disabled = false;
         }

@@ -1,5 +1,5 @@
 /* ---------------------------------------------------------------------------
-   itsamha.com — dark, minimal
+   itsamha.com: dark, minimal
 --------------------------------------------------------------------------- */
 
 :root {
@@ -228,6 +228,23 @@ a:hover {
 .stat-label {
     color: var(--muted);
     font-size: 0.85rem;
+}
+
+.arch {
+    margin: 40px 0 0;
+    overflow-x: auto;
+}
+
+.arch img {
+    display: block;
+    width: 100%;
+    min-width: 720px;
+}
+
+.arch figcaption {
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-top: 10px;
 }
 
 /* Projects ---------------------------------------------------------------- */

@@ -4,16 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amha Shiferaw — Senior Cloud Engineer</title>
+    <title>Amha Shiferaw | Senior Cloud Engineer</title>
     <meta name="description"
-        content="Amha Shiferaw — Senior Cloud Engineer at Relias. AWS, Azure, GCP, Terraform, Kubernetes, and DevOps.">
+        content="Amha Shiferaw | Senior Cloud Engineer at Relias. AWS, Azure, GCP, Terraform, Kubernetes, and DevOps.">
     <meta name="author" content="Amha Shiferaw">
-    <meta property="og:title" content="Amha Shiferaw — Senior Cloud Engineer">
+    <meta property="og:title" content="Amha Shiferaw | Senior Cloud Engineer">
     <meta property="og:description"
         content="Senior Cloud Engineer at Relias. AWS, Azure, GCP, Terraform, Kubernetes, and DevOps.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://itsamha.com">
-    <meta name="twitter:card" content="summary">
+    <meta property="og:image" content="https://itsamha.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://itsamha.com/og-image.png">
     <meta name="theme-color" content="#0b0e14">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,7 +47,7 @@
             <h1>Amha Shiferaw</h1>
             <p class="hero-role">Senior Cloud Engineer at Relias</p>
             <p class="hero-blurb">
-                I build and run cloud infrastructure across AWS, Azure, and GCP —
+                I build and run cloud infrastructure across AWS, Azure, and GCP:
                 Terraform-first, automated end to end, and tuned for cost and reliability.
             </p>
             <div class="hero-links">
@@ -76,7 +80,7 @@
                         experience across cloud infrastructure and CI/CD automation on AWS, Azure, GCP,
                         and bare-metal Kubernetes. I design, deploy, and monitor infrastructure,
                         automate as much of it as possible with Infrastructure as Code, and run
-                        self-healing GitOps pipelines with Flux — with measurable results like 75%
+                        self-healing GitOps pipelines with Flux, with measurable results like 75%
                         faster deployments and 99.9% system uptime.
                     </p>
                     <p>
@@ -92,6 +96,10 @@
                     <li><span class="stat-value">99.9%</span><span class="stat-label">uptime achieved</span></li>
                 </ul>
             </div>
+            <figure class="arch">
+                <img src="architecture.svg?v=1" alt="Architecture diagram: visitors reach CloudFront via Route 53 DNS, static content served from a private S3 bucket, contact form via API Gateway and Lambda. GitHub Actions builds from the repo, fetches Credly certifications, syncs to S3 and invalidates CloudFront. All infrastructure provisioned with Terraform.">
+                <figcaption>The architecture serving this page</figcaption>
+            </figure>
         </section>
 
         <!-- Projects -->
@@ -100,7 +108,7 @@
             <div class="projects-grid">
                 <article class="card">
                     <h3>itsamha.com <a class="card-link" href="https://github.com/shiferaxa/itsamha" target="_blank" rel="noopener">source ↗</a></h3>
-                    <p>This site — a small but complete AWS architecture, provisioned with Terraform
+                    <p>This site: a small but complete AWS architecture, provisioned with Terraform
                         and deployed automatically from GitHub.</p>
                     <ul class="card-points">
                         <li>S3 + CloudFront static hosting with a custom domain</li>

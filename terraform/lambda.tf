@@ -64,9 +64,9 @@ resource "aws_lambda_function" "contact_form" {
   runtime          = "python3.9"
   timeout          = 30
 
-  # Hard ceiling on parallel executions; a flood queues or gets throttled
-  # instead of fanning out
-  reserved_concurrent_executions = 2
+  # Note: no reserved_concurrent_executions here. This account's Lambda
+  # concurrency limit is 10 and AWS requires 10 unreserved, so the account
+  # limit itself is the ceiling. API Gateway throttling handles the rest.
 
   environment {
     variables = {

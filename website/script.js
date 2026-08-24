@@ -96,6 +96,7 @@ function setupContactForm() {
                     email: formData.get('email'),
                     subject: formData.get('subject') || 'Contact Form Submission',
                     message: formData.get('message'),
+                    company: formData.get('company') || '',
                 }),
             });
             if (!resp.ok) {

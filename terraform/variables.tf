@@ -19,17 +19,11 @@ variable "environment" {
 variable "project_name" {
   description = "Name of the project"
   type        = string
-  default     = "personal-portfolio"
+  default     = "amha-portfolio"
 }
 
-variable "cognito_callback_urls" {
-  description = "Callback URLs for Cognito"
-  type        = list(string)
-  default     = ["https://your-domain.com/callback"]
-}
-
-variable "cognito_logout_urls" {
-  description = "Logout URLs for Cognito"
-  type        = list(string)
-  default     = ["https://your-domain.com"]
+variable "contact_email" {
+  description = "Address that receives contact form submissions (must be SES-verified)"
+  type        = string
+  default     = "amhashiferaw@gmail.com"
 }

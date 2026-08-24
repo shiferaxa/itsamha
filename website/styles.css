@@ -423,6 +423,16 @@ a.cert-card:hover {
     color: var(--muted);
 }
 
+/* Honeypot: invisible to humans, tempting to bots */
+.hp-field {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+}
+
 .contact-form .form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;

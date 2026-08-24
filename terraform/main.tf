@@ -1,5 +1,12 @@
 terraform {
   required_version = ">= 1.0"
+
+  backend "s3" {
+    bucket       = "itsamha-tfstate"
+    key          = "itsamha.com/terraform.tfstate"
+    region       = "us-east-1"
+    use_lockfile = true # S3-native locking, no DynamoDB table needed (TF >= 1.10)
+  }
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -58,8 +65,8 @@ resource "aws_s3_bucket_policy" "website" {
     Version = "2012-10-17"
     Statement = [
       {
-        Sid       = "AllowCloudFrontServicePrincipal"
-        Effect    = "Allow"
+        Sid    = "AllowCloudFrontServicePrincipal"
+        Effect = "Allow"
         Principal = {
           Service = "cloudfront.amazonaws.com"
         }

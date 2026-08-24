@@ -27,7 +27,20 @@ def handler(event, context):
     try:
         # Parse request body
         body = json.loads(event['body'])
-        
+
+        # Honeypot: the hidden "company" field is never filled by humans.
+        # Return a fake success so bots don't learn they were caught.
+        if body.get('company', '').strip():
+            print("Honeypot triggered, dropping submission")
+            return {
+                'statusCode': 200,
+                'headers': headers,
+                'body': json.dumps({
+                    'message': 'Thank you for your message! I will get back to you soon.',
+                    'success': True
+                })
+            }
+
         # Validate required fields
         required_fields = ['name', 'email', 'message']
         for field in required_fields:
@@ -56,27 +69,66 @@ def handler(event, context):
                 })
             }
         
-        # Create timestamp
+        # Create timestamp and unique ID
         timestamp = datetime.utcnow().isoformat()
+        import uuid
+        submission_id = str(uuid.uuid4())
         
-        # In a real implementation, you would:
-        # 1. Send email via SES
-        # 2. Store in DynamoDB
-        # 3. Send to SNS topic
+        # Prepare submission data
+        submission_data = {
+            'id': submission_id,
+            'name': name,
+            'email': email,
+            'subject': subject,
+            'message': message,
+            'timestamp': timestamp,
+            'source_ip': event.get('requestContext', {}).get('identity', {}).get('sourceIp', 'unknown'),
+            'user_agent': event.get('headers', {}).get('User-Agent', 'unknown')
+        }
         
-        # For demo purposes, we'll just log and return success
+        # Log the submission (CloudWatch keeps a copy even if email fails)
         print(f"Contact form submission received:")
-        print(f"Name: {name}")
-        print(f"Email: {email}")
+        print(f"ID: {submission_id}")
+        print(f"From: {name} <{email}>")
         print(f"Subject: {subject}")
         print(f"Message: {message}")
         print(f"Timestamp: {timestamp}")
-        
+        print(f"Source IP: {submission_data['source_ip']}")
+
+        # Email the submission via SES. The contact address is both the
+        # verified sender identity and the recipient; Reply-To goes to the
+        # submitter so replying in the inbox just works.
+        contact_email = os.environ.get('CONTACT_EMAIL')
+        if contact_email:
+            try:
+                ses = boto3.client('ses')
+                ses.send_email(
+                    Source=contact_email,
+                    Destination={'ToAddresses': [contact_email]},
+                    ReplyToAddresses=[email],
+                    Message={
+                        'Subject': {'Data': f"[itsamha.com] {subject}"},
+                        'Body': {'Text': {'Data': (
+                            f"From: {name} <{email}>\n"
+                            f"Time: {timestamp}\n"
+                            f"Source IP: {submission_data['source_ip']}\n"
+                            f"Submission ID: {submission_id}\n\n"
+                            f"{message}"
+                        )}}
+                    }
+                )
+                print(f"Email sent to {contact_email}")
+            except Exception as ses_error:
+                # Submission is still in the logs; don't fail the request
+                print(f"SES send failed: {ses_error}")
+
         return {
             'statusCode': 200,
             'headers': headers,
             'body': json.dumps({
                 'message': 'Thank you for your message! I will get back to you soon.',
+                'success': True,
+                'submission_id': submission_id,
                 'timestamp': timestamp
             })
         }

@@ -20,7 +20,7 @@ resource "aws_cloudfront_distribution" "website" {
   comment             = "${var.project_name} CloudFront Distribution"
   default_root_object = "index.html"
 
-  # aliases = [var.domain_name, "www.${var.domain_name}"] # Temporarily disabled while certificate validates
+  aliases = [var.domain_name, "www.${var.domain_name}"] # Temporarily disabled while certificate validates
 
   default_cache_behavior {
     allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
@@ -71,10 +71,9 @@ resource "aws_cloudfront_distribution" "website" {
   }
 
   viewer_certificate {
-    cloudfront_default_certificate = true
-    # acm_certificate_arn      = aws_acm_certificate.website.arn
-    # ssl_support_method       = "sni-only"
-    # minimum_protocol_version = "TLSv1.2_2021"
+    acm_certificate_arn      = "arn:aws:acm:us-east-1:825988191458:certificate/a4c181de-4767-4e98-aec3-e4b69559a5c4"
+    ssl_support_method       = "sni-only"
+    minimum_protocol_version = "TLSv1.2_2021"
   }
 
   custom_error_response {

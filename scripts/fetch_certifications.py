@@ -118,7 +118,16 @@ def main():
         "CCNA",
     ]
 
+    # Entry-level certs that should sit at the very end of the list, after
+    # everything else, regardless of issue date.
+    DEMOTE = [
+        "KCNA:",
+    ]
+
     def priority_index(cert):
+        for pattern in DEMOTE:
+            if pattern in cert["name"]:
+                return len(PRIORITY) + 1
         for i, pattern in enumerate(PRIORITY):
             if pattern in cert["name"]:
                 return i

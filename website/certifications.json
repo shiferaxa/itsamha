@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-21T23:59:01Z",
+  "generated_at": "2026-09-12T22:34:20Z",
   "source": "https://www.credly.com/users/amha-shiferaw",
   "featured": [
     {
@@ -57,6 +57,13 @@
       "date": "2025-05-23",
       "image": "https://images.credly.com/size/220x220/images/00634f82-b07f-4bbd-a6bb-53de397fc3a6/image.png",
       "url": "https://www.credly.com/badges/f7d8b469-8ba9-4b89-8114-e2fa1ac27df7/public_url"
+    },
+    {
+      "name": "KCNA: Kubernetes and Cloud Native Associate",
+      "issuer": "The Linux Foundation",
+      "date": "2026-09-11",
+      "image": "https://images.credly.com/size/220x220/images/f28f1d88-428a-47f6-95b5-7da1dd6c1000/KCNA_badge.png",
+      "url": "https://www.credly.com/badges/94dd569f-2611-48aa-9c2a-4ec8f6cd0e8e/public_url"
     }
   ],
   "badges": [
